@@ -53,6 +53,17 @@ app.get("/articles/:input", function(req, res) {
 })
 
 
+app.get("/*", function(req, res) {
+  res.sendFile(
+    path.join(__dirname, "../client/build/index.html"), 
+    function(err) {
+      if(err) {
+        res.status(500).send(err); 
+      }
+    }
+  )
+})
+
 app.delete("/articles/:input", function(req, res) {
 
   console.log(req.params.input); 
@@ -100,6 +111,6 @@ app.post("/articles", function(req, res){
   
 
 
-app.listen(8000, function() {
+app.listen(process.env.PORT || 8000, function() {
   console.log("Server started on port 8000");
 });
