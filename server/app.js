@@ -7,6 +7,8 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+// had an issue with post a new note entry to database after deploying
+// to heroku, adding below lines to specify cors origins fix the issue.
 let corsOptions = {
   origin: ["https://resonant-malasada-e61302.netlify.app/"],
 
@@ -21,7 +23,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(express.static("public"));
 
 //TODO
-mongoose.connect('mongodb+srv://jinjin19:bfV5QE6zl1ahp7B4@customer.jjeixpq.mongodb.net/wikiDB?retryWrites=true&w=majority', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://jinjin19:secretPd@customer.jjeixpq.mongodb.net/wikiDB?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 
 const articleSchema = {
