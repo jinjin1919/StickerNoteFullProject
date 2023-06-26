@@ -7,6 +7,13 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+let corsOptions = {
+  origin: ["https://resonant-malasada-e61302.netlify.app/"],
+
+};
+app.use(cors(corsOptions)); 
+
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
